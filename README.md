@@ -30,4 +30,4 @@ What?
 -----
 
 this is a silly boring quick demo of a simple python web app. See
-[Hacking Python](/sparq-labs/hacking-python).
+[Hacking Python](https://github.com/sparq-labs/hacking-python).
