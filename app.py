@@ -40,6 +40,7 @@ def jokes():
         "A neutrino walks into a bar. The bartender says 'We don't serve neutrinos in this bar.' The neutrino says 'Hey, I was just passing through.",
         "Some Helium gas drifts into the bar. 'The bartender says we don't serve Helium.' The Helium doesn't react.",
         "Let epsilon be an integer.",
+        "The bartender says \"We don't serve Tachyons here\". A Tachyon walks into a bar.",
         "Bartender: 'Get out! We don't serve beer to faster than light subatomic particles !!' / A neutrino enters the bar.",
         "Wanted Schrödinger's cat. Dead xor Alive.",
         "A programmer's wife asks him to go to the store and pick up a stick of butter, and while he's there, pick up eggs. / He never returned.",
