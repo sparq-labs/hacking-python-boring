@@ -4,18 +4,8 @@ from flask import Flask, url_for
 
 app = Flask(__name__)
 
-
-@app.route('/')
-def home():
-    return 'hello world. <a href="{}">a joke.</a>'.format(url_for('jokes'))
-
-
-@app.route('/jokes')
-def jokes():
-    """all stolen: http://www.quora.com/Humor/What-is-the-geekiest-joke"""
-
-    joke_list = [
-        "Yo momma's so mean, she has no standard deviation.",
+joke_list = [
+	"Yo momma's so mean, she has no standard deviation.",
         "Heisenberg gets pulled over by the police. The cop asks, 'Do you know how fast you were going?' Heisenberg responds, 'No, but I know exactly where I am!'",
         "Girlfriend: Honey, I cant open this jar / Geek Boyfriend: Try reinstalling java",
         "Yo mamma is so old Debian has marked her a stable release",
@@ -45,9 +35,6 @@ def jokes():
         "Schroedinger's Cat walks into a bar...and doesn't.",
         "A neutrino walks into a bar. The bartender says 'We don't serve neutrinos in this bar.' The neutrino says 'Hey, I was just passing through.",
         "Some Helium gas drifts into the bar. 'The bartender says we don't serve Helium.' The Helium doesn't react.",
-        "Let epsilon be an integer.",
-        "The bartender says \"We don't serve Tachyons here\". A Tachyon walks into a bar.",
-        "Bartender: 'Get out! We don't serve beer to faster than light subatomic particles !!' / A neutrino enters the bar.",
         "Wanted Schrödinger's cat. Dead xor Alive.",
         "A programmer's wife asks him to go to the store and pick up a stick of butter, and while he's there, pick up eggs. / He never returned.",
         "The box said ‘Requires Windows Vista or better’. So I installed LINUX.",
@@ -57,7 +44,19 @@ def jokes():
         "An SEO expert walks into a bar, bars, beer garden, hangout, lounge, night club, mini bar, bar stool, tavern, pub, beer, wine, whiskey...",
         "A neutron walked into a bar and asked, 'How much for a drink?' The bartender replied, 'For you, no charge.'",
         "There are two types of people in this world.  Those who like closure, and",
-    ]
+	"I donn't have any more jokes",
+]
+
+
+@app.route('/')
+def home():
+    return 'TUMBLEWEED. <a href="{}">a joke.</a>'.format(url_for('jokes'))
+
+
+@app.route('/jokes')
+def jokes():
+    """all stolen: http://www.quora.com/Humor/What-is-the-geekiest-joke"""
+
     return '<a href="{}"><< back home</a><br/>{}'.format(
         url_for("home"), choice(joke_list))
 
@@ -66,6 +65,11 @@ def jokes():
 def cant_find_this():
     return "obscurity is not security"
 
+@app.route('/Exciting-page')
+def exciting():
+	jokes = str(joke_list)
+	return jokes
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0", port=5004)
+
