@@ -1,3 +1,4 @@
+
 #~*~ coding: utf-8 ~*~
 from random import choice
 from flask import Flask, url_for
@@ -7,8 +8,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return 'hello world. <a href="{}">a joke.</a>'.format(url_for('jokes'))
+    return 'Chuk is handsome. <a href="{}">That is a joke.</a> Also here some yo mamma jokes: <a href="{}">to the jokes.</a>'.format(url_for('jokes'), 
+url_for('yomamma')) 
 
+@app.route('/yomamma')
+def yomamma():
+	yomamma_jokes=[
+		"yo' mama is such a slut even the noble gases are attracted to her.",
+		"yo' mama such a slut, that i came home and asked what was for dinner. she opened her legs and said tuna surprise" 
+
+	]
+	return '<a href="{}"><< back home</a><br/>{}'.format(
+        url_for("home"), choice(yomamma_jokes))
 
 @app.route('/jokes')
 def jokes():
@@ -23,7 +34,10 @@ def jokes():
         "'Knock, knock.' / Who’s there?' / very long pause... / 'Java.'",
         "Q: 'Whats the object-oriented way to become wealthy?' / A: Inheritance",
         "'Lets talk about potassium' / 'K.'",
+	"Yesterday I ran 2km yester day - one lap around yo mama",
+	"Q:2 kittens slid off a roof, how can you tell which one fell off first? / A: the one with the lowest mew", 
         "I'd tell you a UDP joke but you might not get it.",
+	"Yo' mama is such a slut that when walks her vagina clap",
         "If you're not part of the solution, you're part of the precipitate.",
         "Assume we have 1000 apples, or let's take a round figure, 1024 apples.",
         "Q: What do you get when you cross a mosquito with a rock climber? / A: Nothing. You can't cross a vector and a scalar.",
@@ -45,8 +59,6 @@ def jokes():
         "Schroedinger's Cat walks into a bar...and doesn't.",
         "A neutrino walks into a bar. The bartender says 'We don't serve neutrinos in this bar.' The neutrino says 'Hey, I was just passing through.",
         "Some Helium gas drifts into the bar. 'The bartender says we don't serve Helium.' The Helium doesn't react.",
-        "Let epsilon be an integer.",
-        "The bartender says \"We don't serve Tachyons here\". A Tachyon walks into a bar.",
         "Bartender: 'Get out! We don't serve beer to faster than light subatomic particles !!' / A neutrino enters the bar.",
         "Wanted Schrödinger's cat. Dead xor Alive.",
         "A programmer's wife asks him to go to the store and pick up a stick of butter, and while he's there, pick up eggs. / He never returned.",
@@ -68,4 +80,4 @@ def cant_find_this():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0", port=5006)
