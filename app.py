@@ -1,21 +1,18 @@
 #~*~ coding: utf-8 ~*~
 from random import choice
-from flask import Flask, url_for
+from flask import Flask, url_for, request
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def home():
-    return 'hello world. <a href="{}">a joke.</a>'.format(url_for('jokes'))
-
+    return 'bon jour - hello world. <a href="{}">a joke.</a> <a href="{}">Avery page.</a><a href="{}"> testing.</a>'.format(url_for('jokes'), url_for('our_new_page'),url_for('test', x=0))
 
 @app.route('/jokes')
 def jokes():
     """all stolen: http://www.quora.com/Humor/What-is-the-geekiest-joke"""
 
-    joke_list = [
-        "Yo momma's so mean, she has no standard deviation.",
+    """ "Yo momma's so mean, she has no standard deviation.",
         "Heisenberg gets pulled over by the police. The cop asks, 'Do you know how fast you were going?' Heisenberg responds, 'No, but I know exactly where I am!'",
         "Girlfriend: Honey, I cant open this jar / Geek Boyfriend: Try reinstalling java",
         "Yo mamma is so old Debian has marked her a stable release",
@@ -55,8 +52,10 @@ def jokes():
         "Why did the chicken cross the Möbius strip? To get to the same side.",
         "An SQL query walks into a bar and sees two tables. She walks up to them and says, 'mind if I join you?'.",
         "An SEO expert walks into a bar, bars, beer garden, hangout, lounge, night club, mini bar, bar stool, tavern, pub, beer, wine, whiskey...",
-        "A neutron walked into a bar and asked, 'How much for a drink?' The bartender replied, 'For you, no charge.'",
+        "A neutron walked into a bar and asked, 'How much for a drink?' The bartender replied, 'For you, no charge.'", """
+    joke_list = [
         "There are two types of people in this world.  Those who like closure, and",
+        "blah blah"
     ]
     return '<a href="{}"><< back home</a><br/>{}'.format(
         url_for("home"), choice(joke_list))
@@ -66,6 +65,19 @@ def jokes():
 def cant_find_this():
     return "obscurity is not security"
 
+@app.route('/avery')
+def our_new_page():
+    return " haha"
+
+@app.route('/testing')
+def test():
+    print request.args
+    x =int( request.args['x'])
+    if  x < 10:
+    	x = x + 1
+        return "<a href='{}'>testing</a>".format(url_for("test", x=x))
+    else:
+        return "<a href='{}'>testing</a>".format(url_for("home"))
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0", port=5005)
